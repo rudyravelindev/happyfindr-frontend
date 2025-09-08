@@ -20,14 +20,16 @@ export default function Footer() {
           </a>
         </div>
 
-        <p className="footer__copyright">
-          © 2025 HappyFindr. All rights reserved.
-        </p>
+        <div className="footer__right">
+          <p className="footer__copyright">
+            © 2025 HappyFindr. All rights reserved.
+          </p>
 
-        <p className="footer__tagline">
-          Made with <span className="footer__heart">❤️</span> for travelers
-          everywhere
-        </p>
+          <p className="footer__tagline">
+            Made with <span className="footer__heart">❤️</span> for travelers
+            everywhere
+          </p>
+        </div>
       </div>
     </footer>
   );
