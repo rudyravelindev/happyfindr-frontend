@@ -19,8 +19,8 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="#features" className="navbar__link">
-              Features
+            <a href="#howitworks" className="navbar__link">
+              How it works
             </a>
           </li>
           <li>

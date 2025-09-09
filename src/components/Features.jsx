@@ -33,7 +33,7 @@ const containerVariants = {
 
 export default function Features() {
   return (
-    <section id="features" className="features">
+    <section id="howitworks" className="features">
       <div className="features__container">
         <h2 className="features__title">How HappyFindr Works</h2>
 

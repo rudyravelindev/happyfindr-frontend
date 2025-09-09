@@ -1,26 +1,75 @@
+import { motion } from 'framer-motion';
+import './Hero.css';
+import heroImage from '../assets/hero-img.svg';
+
+const heroVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      damping: 12,
+      stiffness: 100,
+    },
+  },
+};
+
 export default function Hero() {
   return (
-    <section
+    <motion.section
       id="hero"
-      className="bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-600 text-white py-40"
+      className="hero"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={heroVariants}
     >
-      <div className="container mx-auto text-center px-4">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold drop-shadow-lg mb-6">
-          Never Lose Your Belongings Again 🚀
-        </h1>
+      <div className="hero__container">
+        <div className="hero__grid">
+          {/* Text Content - Left Side */}
+          <div className="hero__content">
+            <motion.h1 className="hero__title" variants={itemVariants}>
+              Never Lose Your Belongings Again
+            </motion.h1>
 
-        <p className="text-lg md:text-xl lg:text-2xl drop-shadow-md mb-10">
-          Attach a QR code to your items and make it easy for others to return
-          them safely.
-        </p>
+            <motion.p className="hero__description" variants={itemVariants}>
+              Attach a QR code to your items and make it easy for others to
+              return them safely.
+            </motion.p>
 
-        <a
-          href="#cta"
-          className="bg-white text-indigo-600 px-8 py-4 rounded-full font-bold shadow-lg text-lg md:text-xl transform transition hover:scale-105 hover:bg-gray-100"
-        >
-          Get Started
-        </a>
+            <motion.a
+              href="#cta"
+              className="hero__button"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Get Started
+            </motion.a>
+          </div>
+
+          {/* Image - Right Side */}
+          <motion.div className="hero__image-container" variants={itemVariants}>
+            <img
+              src={heroImage}
+              alt="Three friends smiling and making peace signs while using HappyFindr app to scan QR codes on their belongings"
+              className="hero__image"
+            />
+          </motion.div>
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

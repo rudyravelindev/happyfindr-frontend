@@ -17,7 +17,10 @@ body {
   min-height: 100vh;
 }
 
-/* This will push your footer to the bottom */
 main {
   flex: 1;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
