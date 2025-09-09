@@ -38,7 +38,6 @@ export default function Hero() {
     >
       <div className="hero__container">
         <div className="hero__grid">
-          {/* Text Content - Left Side */}
           <div className="hero__content">
             <motion.h1 className="hero__title" variants={itemVariants}>
               Never Lose Your Belongings Again
