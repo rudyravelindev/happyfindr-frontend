@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { AiOutlineMenu } from 'react-icons/ai';
 
@@ -8,9 +9,9 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar__container">
-        <h1 className="navbar__logo">
+        <Link to="/" className="navbar__logo">
           Happy<span className="navbar__logo--accent">Findr</span>
-        </h1>
+        </Link>
 
         {/* Desktop Links */}
         <ul className="navbar__links">
@@ -24,16 +25,20 @@ export default function Navbar() {
               How it works
             </a>
           </li>
-
           <li>
             <a href="#testimonials" className="navbar__link">
               Testimonials
             </a>
           </li>
           <li>
-            <a href="#cta" className="navbar__link">
+            <Link to="/signup" className="navbar__link">
               Get Started
-            </a>
+            </Link>
+          </li>
+          <li>
+            <Link to="/login" className="navbar__link navbar__link--login">
+              Log In
+            </Link>
           </li>
         </ul>
 
@@ -62,7 +67,6 @@ export default function Navbar() {
           >
             How it works
           </a>
-
           <a
             href="#testimonials"
             className="navbar__mobile-link"
@@ -70,14 +74,20 @@ export default function Navbar() {
           >
             Testimonials
           </a>
-
-          <a
-            href="#cta"
+          <Link
+            to="/signup"
             className="navbar__mobile-link"
             onClick={() => setIsOpen(false)}
           >
             Get Started
-          </a>
+          </Link>
+          <Link
+            to="/login"
+            className="navbar__mobile-link"
+            onClick={() => setIsOpen(false)}
+          >
+            Log In
+          </Link>
         </div>
       </div>
     </nav>

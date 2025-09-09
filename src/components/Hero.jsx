@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import './Hero.css';
-import heroImage from '../assets/hero-img.svg';
+import heroImage from '../assets/images/hero-img.svg';
 
 const heroVariants = {
   hidden: { opacity: 0 },
@@ -48,15 +49,16 @@ export default function Hero() {
               return them safely.
             </motion.p>
 
-            <motion.a
-              href="#cta"
-              className="hero__button"
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Get Started
-            </motion.a>
+            <motion.div variants={itemVariants}>
+              <Link
+                to="/signup"
+                className="hero__button"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get Started
+              </Link>
+            </motion.div>
           </div>
 
           {/* Image - Right Side */}

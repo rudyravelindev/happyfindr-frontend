@@ -1,5 +1,6 @@
 import './CTA.css';
-import ctaImage from '../assets/cta-img.jpg';
+import ctaImage from '../assets/images/cta-img.jpg';
+import { Link } from 'react-router-dom';
 
 export default function CTA() {
   return (
@@ -14,7 +15,9 @@ export default function CTA() {
             through HappyFindr's smart QR code system.
           </p>
 
-          <button className="cta__button">Get Started Now</button>
+          <Link to="/signup" className="cta__button">
+            Get Started Now
+          </Link>
 
           <div className="cta__footer">
             <p className="cta__footer-text">

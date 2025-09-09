@@ -46,7 +46,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  margin-bottom: 3rem;
+  text-decoration: none;
 }
 
 .cta__button:hover {
@@ -57,6 +57,7 @@
 .cta__footer {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 1.5rem;
+  margin-top: 3rem;
 }
 
 .cta__footer-text {
