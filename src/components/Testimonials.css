@@ -1,0 +1,118 @@
+.testimonials {
+  padding: 7rem 0;
+  background-color: #f9fafb;
+}
+
+.testimonials__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.testimonials__title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 4rem;
+  color: #1f2937;
+}
+
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.testimonial__card {
+  padding: 3rem 2.5rem;
+  border-radius: 1.5rem;
+  text-align: left;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.testimonial__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Different background colors for each card */
+.testimonial__card--blue {
+  background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+  color: white;
+}
+
+.testimonial__card--purple {
+  background: linear-gradient(135deg, #7209b7 0%, #560bad 100%);
+  color: white;
+}
+
+.testimonial__card--green {
+  background: linear-gradient(135deg, #4cc9f0 0%, #4895ef 100%);
+  color: white;
+}
+
+.testimonial__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.testimonial__text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.testimonial__author {
+  margin-top: auto;
+}
+
+.testimonial__name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.testimonial__role {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .testimonials__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .testimonials__title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial__card {
+    padding: 3.5rem 3rem;
+  }
+
+  .testimonial__text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .testimonials__grid {
+    gap: 1.5rem;
+  }
+
+  .testimonial__card {
+    padding: 2.5rem 2rem;
+  }
+
+  .testimonials__title {
+    font-size: 2.25rem;
+  }
+}

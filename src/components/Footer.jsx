@@ -12,8 +12,11 @@ export default function Footer() {
           <a href="#hero" className="footer__link">
             Home
           </a>
-          <a href="#features" className="footer__link">
-            Features
+          <a href="#howitworks" className="footer__link">
+            How it works
+          </a>
+          <a href="#testimonials" className="footer__link">
+            Testimonilas
           </a>
           <a href="#cta" className="footer__link">
             Get Started

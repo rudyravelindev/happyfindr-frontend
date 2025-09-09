@@ -23,6 +23,12 @@ export default function Navbar() {
               How it works
             </a>
           </li>
+
+          <li>
+            <a href="#testimonials" className="navbar__link">
+              Testimonials
+            </a>
+          </li>
           <li>
             <a href="#cta" className="navbar__link">
               Get Started
@@ -49,12 +55,21 @@ export default function Navbar() {
             Home
           </a>
           <a
-            href="#features"
+            href="#howitworks"
             className="navbar__mobile-link"
             onClick={() => setIsOpen(false)}
           >
-            Features
+            How it works
           </a>
+
+          <a
+            href="#testimonials"
+            className="navbar__mobile-link"
+            onClick={() => setIsOpen(false)}
+          >
+            Testimonials
+          </a>
+
           <a
             href="#cta"
             className="navbar__mobile-link"
