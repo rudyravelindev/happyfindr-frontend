@@ -6,7 +6,6 @@ export default function CTA() {
   return (
     <section id="cta" className="cta">
       <div className="cta__container">
-        {/* Left Column - Text Content */}
         <div className="cta__content">
           <h1 className="cta__title">Start Retrieving Your Items Today!</h1>
 
@@ -26,7 +25,6 @@ export default function CTA() {
           </div>
         </div>
 
-        {/* Right Column - Image */}
         <div className="cta__image-container">
           <img src={ctaImage} alt="Happy people" className="cta__image" />
         </div>

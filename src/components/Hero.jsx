@@ -61,7 +61,6 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Image - Right Side */}
           <motion.div className="hero__image-container" variants={itemVariants}>
             <img
               src={heroImage}
