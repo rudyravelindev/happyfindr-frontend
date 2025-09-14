@@ -108,6 +108,10 @@ export default function Items() {
     setSelectedItem(null);
     setViewMode('view');
   };
+  const handleModeChange = (mode, item = null) => {
+    setViewMode(mode);
+    if (item) setSelectedItem(item);
+  };
 
   if (loading) {
     return (
@@ -175,6 +179,7 @@ export default function Items() {
             item={item}
             onView={handleViewItem}
             onEdit={handleEditItem}
+            onDelete={handleDeleteItem}
           />
         ))}
       </div>
@@ -201,6 +206,7 @@ export default function Items() {
           item={selectedItem}
           mode={viewMode}
           onClose={handleCloseModal}
+          onModeChange={handleModeChange}
           onEdit={handleEditItem}
           onUpdate={handleUpdateItem}
           onDelete={handleDeleteItem}
