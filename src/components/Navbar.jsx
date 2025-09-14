@@ -16,7 +16,7 @@ export default function Navbar() {
         {/* Desktop Links */}
         <ul className="navbar__links">
           <li>
-            <a href="#hero" className="navbar__link">
+            <a href="/" className="navbar__link">
               Home
             </a>
           </li>
@@ -54,7 +54,7 @@ export default function Navbar() {
           }`}
         >
           <a
-            href="#hero"
+            href="/"
             className="navbar__mobile-link"
             onClick={() => setIsOpen(false)}
           >
