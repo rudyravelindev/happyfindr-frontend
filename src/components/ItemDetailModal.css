@@ -1,0 +1,262 @@
+/* ItemDetailModal.css */
+.modal--large {
+  max-width: 600px;
+}
+
+.item-detail {
+  padding: 1.5rem;
+}
+
+.item-detail__image {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.item-detail__image img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.item-detail__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.item-detail__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.item-detail__field label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.item-detail__field p {
+  margin: 0;
+  color: #4b5563;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  display: inline-block;
+}
+
+.status-badge--registered {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge--lost {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-badge--found {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.item-detail__actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.btn--danger {
+  background: #dc2626;
+  color: white;
+}
+
+.btn--danger:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+.btn--danger:disabled {
+  background: #fca5a5;
+  cursor: not-allowed;
+}
+
+.delete-confirm-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.delete-confirm {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.delete-confirm h3 {
+  margin: 0 0 0.75rem 0;
+  color: #1f2937;
+  font-size: 1.25rem;
+}
+
+.delete-confirm p {
+  margin: 0 0 1.5rem 0;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.delete-confirm__actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .modal--large {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+  }
+
+  .item-detail__actions {
+    flex-direction: column;
+  }
+
+  .delete-confirm__actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Image placeholder for items without images */
+.item-detail__image-placeholder {
+  width: 100%;
+  height: 200px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 3rem;
+}
+
+/* View/Edit mode transitions */
+.item-detail__content.view-mode {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.item-detail__content.edit-mode {
+  animation: slideIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Loading state for image upload */
+.image-upload-loading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.image-upload-loading::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: 2px solid #e5e7eb;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Status indicator for view mode */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-indicator::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-indicator--registered::before {
+  background-color: #10b981;
+}
+
+.status-indicator--lost::before {
+  background-color: #ef4444;
+}
+
+.status-indicator--found::before {
+  background-color: #3b82f6;
+}
+
+/* Enhanced form styles for edit mode */
+.form-group--inline {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-group--inline .form-group {
+  flex: 1;
+}
+
+/* Read-only view enhancements */
+.read-only-field {
+  background: #f9fafb;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.read-only-field p {
+  margin: 0;
+  color: #374151;
+}
