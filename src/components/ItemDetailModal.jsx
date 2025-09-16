@@ -186,10 +186,10 @@ export default function ItemDetailModal({
 
             <div className="item-detail__actions">
               <button
-                onClick={() => onModeChange(item)}
-                className="btn btn--primary"
+                className="item-card__action btn btn--primary"
+                onClick={() => onEdit(item)}
               >
-                Edit Item
+                ✏️ Edit
               </button>
               <button
                 onClick={() => setShowDeleteConfirm(true)}
