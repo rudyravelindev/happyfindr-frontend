@@ -31,11 +31,6 @@ export default function DashboardHeader({ onMenuClick }) {
       </div>
 
       <div className="dashboard-header__right">
-        <button className="dashboard-header__notification">
-          <AiOutlineBell />
-          <span className="dashboard-header__badge">3</span>
-        </button>
-
         <div className="dashboard-header__profile">
           <button
             className="dashboard-header__profile-btn"
