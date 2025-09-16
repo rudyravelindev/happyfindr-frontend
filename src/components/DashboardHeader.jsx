@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from './AuthContext';
 import ProfileModal from './ProfileModal';
+import { Link } from 'react-router-dom';
 
 import {
   AiOutlineMenu,
@@ -26,10 +27,7 @@ export default function DashboardHeader({ onMenuClick }) {
   return (
     <header className="dashboard-header">
       <div className="dashboard-header__left">
-        <button className="dashboard-header__menu" onClick={onMenuClick}>
-          <AiOutlineMenu />
-        </button>
-        <h1 className="dashboard-header__title">Dashboard</h1>
+        <h1 className="dashboard-header__title">Your Belongings</h1>
       </div>
 
       <div className="dashboard-header__right">

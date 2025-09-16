@@ -157,3 +157,10 @@
     display: none;
   }
 }
+.navbar__logo {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
