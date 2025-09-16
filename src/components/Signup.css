@@ -53,6 +53,11 @@
   text-align: justify;
 }
 
+.signup__avatar-group {
+  display: flex;
+  gap: 1rem;
+}
+
 .signup__input {
   padding: 0.75rem 1rem;
   border: 2px solid #e5e7eb;
