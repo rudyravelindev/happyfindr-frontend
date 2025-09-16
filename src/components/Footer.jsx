@@ -16,7 +16,7 @@ export default function Footer() {
             How it works
           </a>
           <a href="#testimonials" className="footer__link">
-            Testimonilas
+            Testimonials
           </a>
           <a href="#cta" className="footer__link">
             Get Started

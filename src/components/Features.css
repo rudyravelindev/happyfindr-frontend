@@ -25,28 +25,25 @@
 
 /* --- STYLES FOR ICONS --- */
 .features__icon-container {
-  /* Controls the SIZE of all icons */
   display: inline-flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 1.5rem;
-  font-size: 3.5rem; /* This sets the base size for the icon */
+  font-size: 3.5rem;
 }
 
 .features__icon {
-  /* Inherits color and size from its container */
-  color: var(--color-heading, #1f2937); /* Fallback color */
+  color: var(--color-heading, #1f2937);
 }
 
 .features__icon--primary {
-  color: var(--color-primary, #4361ee); /* Your brand color */
+  color: var(--color-primary, #4361ee);
 }
 
 .features__icon--accent {
-  color: var(--color-accent, #f72585); /* A secondary color for contrast */
+  color: var(--color-accent, #f72585);
 }
 
-/* Special container for the composite (stacked) icon */
 .features__icon-container--composite {
   position: relative;
   width: 1em; /* Width of one icon */
@@ -54,22 +51,19 @@
 }
 
 .features__icon-container--composite > .features__icon:nth-child(2) {
-  /* Styles for the second icon (the paperclip) inside the composite container */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 0.5em; /* Make it smaller than the background icon */
+  font-size: 0.5em;
+  /* --- ICON STYLES END HERE --- */
 }
-/* --- ICON STYLES END HERE --- */
-
 .features__card {
   background-color: white;
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  /* REMOVED: opacity and animation properties */
 }
 
 .features__card:hover {
