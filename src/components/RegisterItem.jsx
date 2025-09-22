@@ -12,7 +12,7 @@ export default function RegisterItem() {
   const [qrCodeUrl, setQrCodeUrl] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
-  const [showModal, setShowModal] = useState(false); // new state
+  const [showModal, setShowModal] = useState(false);
 
   const generateQRCode = async (itemData) => {
     setIsGenerating(true);
@@ -63,7 +63,7 @@ export default function RegisterItem() {
   };
 
   const handleViewItem = () => {
-    setShowModal(true); // open the modal instead of window.open
+    setShowModal(true);
   };
 
   const handleDownloadQR = () => {
@@ -114,7 +114,6 @@ export default function RegisterItem() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="register-item__form">
-          {/* form fields here */}
           <div className="register-item__form-group">
             <label htmlFor="name">Item Name *</label>
             <input
@@ -126,7 +125,7 @@ export default function RegisterItem() {
               required
             />
           </div>
-          {/* ...other fields */}
+
           <button type="submit" disabled={isGenerating}>
             {isGenerating ? 'Generating QR...' : 'Register Item'}
           </button>

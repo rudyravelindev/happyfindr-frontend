@@ -23,10 +23,8 @@ export default function Items() {
       setLoading(true);
       setError(null);
 
-      // Simulate network delay
       await new Promise((resolve) => setTimeout(resolve, 500));
 
-      // Get user items from the database
       if (currentUser) {
         const dbService = await import('./DatabaseService');
         const userItems = dbService.default.getUserItems(currentUser.id);

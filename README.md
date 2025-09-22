@@ -41,7 +41,7 @@ HappyFindr is a modern web application that helps you protect your valuable item
 3. **Start the development server**
 
    ```bash
-   npm start
+   npm run dev
    ```
 
 4. **Open your browser**
@@ -51,8 +51,8 @@ HappyFindr is a modern web application that helps you protect your valuable item
 
 1. **Generate**: Create a unique QR code for your item through our web app
 2. **Attach**: Place the QR tag on your valuable items (keys, wallet, backpack, etc.)
-3. **Track**: If lost, anyone who finds your item can scan the QR code
-4. **Retrieve**: Get instant notifications and arrange for safe return
+3. **Track**: If lost, anyone who finds your item can scan the QR code (Coming soon)
+4. **Retrieve**: Get instant notifications and arrange for safe return (Coming soon)
 
 ## 📱 Usage
 
@@ -61,12 +61,12 @@ HappyFindr is a modern web application that helps you protect your valuable item
 1. Sign up for a free account
 2. Generate QR codes for your items
 3. Print and attach the tags
-4. Receive notifications when items are found
+4. Receive notifications when items are found (Coming soon)
 
 ### For Finders:
 
 1. Scan the QR code on found items
-2. Send a secure message to the owner
+2. Send a secure message to the owner (Coming soon)
 3. Help reunite people with their belongings
 
 ## 🌟 Key Components
@@ -121,11 +121,11 @@ If you need help or have questions:
 
 - Create an issue on GitHub
 - Check our documentation
-- Contact our support team at support@happyfindr.com
+- Contact our support team at rudyravelindev@gmail.com
 
 ## 🌐 Live Demo
 
-Check out our live application: [https://happyfindr.com](https://happyfindr.com)
+Check out our live application: [https://happyfindr.com](https://happyfindr.com) (Coming soon)
 
 ---
 
