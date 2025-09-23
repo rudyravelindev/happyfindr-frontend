@@ -18,7 +18,7 @@ export default function Signup() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const { register } = useAuth();
+  const { signup } = useAuth();
   const navigate = useNavigate();
 
   // Form validation
@@ -38,35 +38,6 @@ export default function Signup() {
       newErrors.confirmPassword = 'Please confirm your password';
     else if (formData.password !== formData.confirmPassword)
       newErrors.confirmPassword = 'Passwords do not match';
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const { signup } = useAuth();
-  const navigate = useNavigate();
-
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-    }
-
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
-    }
-
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = 'Please confirm your password';
-    } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
-    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -95,8 +66,6 @@ export default function Signup() {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-  const handleSubmit = async (e) => {
-    e.preventDefault();
 
     if (!validateForm()) return;
 
@@ -111,41 +80,20 @@ export default function Signup() {
         avatar, // store base64 avatar
       };
 
-      await register(userData);
+      await signup(formData.email, formData.password, {
+        name: formData.name,
+      });
 
       // Save avatar in localStorage for later use
       if (avatar) localStorage.setItem('userAvatar', avatar);
 
-      navigate('/dashboard');
+      navigate('/items');
     } catch (error) {
       setErrors({
         submit: error.message || 'Failed to create account. Please try again.',
       });
     } finally {
       setLoading(false);
-      await signup(formData.email, formData.password, {
-        name: formData.name,
-      });
-      navigate('/items');
-    } catch (error) {
-      setErrors({ submit: 'Failed to create account. Please try again.' });
-    }
-    setLoading(false);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: '',
-      }));
     }
   };
 
@@ -263,6 +211,7 @@ export default function Signup() {
             />
             {avatarFileName && <p>Selected file: {avatarFileName}</p>}
           </div>
+
           {/* Submit Button */}
           <button type="submit" className="signup__button" disabled={loading}>
             {loading ? <LoadingSpinner size="small" /> : 'Create Account'}
@@ -281,4 +230,3 @@ export default function Signup() {
     </div>
   );
 }
-  }}

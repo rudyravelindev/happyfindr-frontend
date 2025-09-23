@@ -10,11 +10,7 @@
 
 .signup__container {
   background: white;
-<<<<<<< HEAD
-  padding: 0.5rem 2.5rem;
-=======
   padding: 2.5rem;
->>>>>>> 7750dd0 (creating the signup and login pages)
   border-radius: 1rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -27,11 +23,7 @@
 }
 
 .signup__title {
-<<<<<<< HEAD
-  font-size: 1.9rem;
-=======
   font-size: 1.875rem;
->>>>>>> 7750dd0 (creating the signup and login pages)
   font-weight: 700;
   color: #1f2937;
   margin-bottom: 0.5rem;
@@ -57,17 +49,13 @@
 .signup__label {
   font-weight: 500;
   color: #374151;
-<<<<<<< HEAD
-  font-size: 1rem;
-  text-align: justify;
+  font-size: 0.875rem;
 }
 
 .signup__avatar-group {
   display: flex;
-  gap: 1rem;
-=======
-  font-size: 0.875rem;
->>>>>>> 7750dd0 (creating the signup and login pages)
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .signup__input {
