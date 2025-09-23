@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from './AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LoadingSpinner from './LoadingSpinner';
 import ErrorMessage from './ErrorMessage';
 import './Login.css';
@@ -13,7 +13,7 @@ export default function Login() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
-  const navigate = useNavigate(); // Add useNavigate hook
+  const navigate = useNavigate();
 
   const validateForm = () => {
     const newErrors = {};
@@ -41,8 +41,7 @@ export default function Login() {
       setErrors({});
       setLoading(true);
       await login(formData.email, formData.password);
-      // Redirect to dashboard after successful login
-      navigate('/dashboard');
+      navigate('/');
     } catch (error) {
       setErrors({ submit: 'Failed to log in. Please check your credentials.' });
     }
