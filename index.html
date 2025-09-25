@@ -5,10 +5,20 @@
     <link rel="icon" href="./src/assets/icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HappyFindr</title>
-    <script type="module" crossorigin src="/happyfindr-frontend/assets/index-DHxFdiUC.js"></script>
-    <link rel="stylesheet" crossorigin href="/happyfindr-frontend/assets/index-DCWRAN3S.css">
+    <script type="module" crossorigin src="/happyfindr-frontend/assets/index-Cf7-rKAZ.js"></script>
+    <link rel="stylesheet" crossorigin href="/happyfindr-frontend/assets/index-De-hYi5z.css">
   </head>
   <body>
     <div id="root"></div>
+
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        const redirect = params.get('redirect');
+        if (redirect) {
+          window.history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </body>
 </html>
