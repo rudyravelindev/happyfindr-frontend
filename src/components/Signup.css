@@ -52,12 +52,6 @@
   font-size: 0.875rem;
 }
 
-.signup__avatar-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
 .signup__input {
   padding: 0.75rem 1rem;
   border: 2px solid #e5e7eb;

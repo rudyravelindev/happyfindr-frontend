@@ -14,7 +14,7 @@ export default function Signup() {
   });
 
   const [avatar, setAvatar] = useState(null); // base64 avatar
-  const [avatarFileName, setAvatarFileName] = useState(''); // filename for feedback
+  const [avatarFileName, setAvatarFileName] = useState(''); // filename for UI feedback
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
@@ -56,10 +56,10 @@ export default function Signup() {
     const file = e.target.files[0];
     if (!file) return;
 
-    setAvatarFileName(file.name); // show filename in signup form
+    setAvatarFileName(file.name);
 
     const reader = new FileReader();
-    reader.onloadend = () => setAvatar(reader.result); // store base64 for localStorage
+    reader.onloadend = () => setAvatar(reader.result);
     reader.readAsDataURL(file);
   };
 
@@ -72,19 +72,18 @@ export default function Signup() {
     try {
       setLoading(true);
 
-      // Prepare user data for registration
+      // user data you may later send to backend
       const userData = {
         name: formData.name,
         email: formData.email,
         password: formData.password,
-        avatar, // store base64 avatar
+        avatar,
       };
 
       await signup(formData.email, formData.password, {
         name: formData.name,
       });
 
-      // Save avatar in localStorage for later use
       if (avatar) localStorage.setItem('userAvatar', avatar);
 
       navigate('/items');
