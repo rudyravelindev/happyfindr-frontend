@@ -125,7 +125,7 @@ If you need help or have questions:
 
 ## 🌐 Live Demo
 
-Check out our live application: (happyfindr )[https://rudyravelindev.github.io/happyfindr-frontend/]
+Check out our live application: [happyfindr](https://rudyravelindev.github.io/happyfindr-frontend/)
 
 ---
 
