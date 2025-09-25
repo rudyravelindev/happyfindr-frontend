@@ -6,29 +6,43 @@ import { AiOutlineMenu } from 'react-icons/ai';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false); // close mobile menu
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar__container">
-        <Link to="/" className="navbar__logo">
+        <Link to="/" className="navbar__logo" onClick={() => setIsOpen(false)}>
           Happy<span className="navbar__logo--accent">Findr</span>
         </Link>
 
         {/* Desktop Links */}
         <ul className="navbar__links">
           <li>
-            <a href="/" className="navbar__link">
+            <Link to="/" className="navbar__link">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#howitworks" className="navbar__link">
+            <button
+              className="navbar__link navbar__link--button"
+              onClick={() => scrollToSection('howitworks')}
+            >
               How it works
-            </a>
+            </button>
           </li>
           <li>
-            <a href="#testimonials" className="navbar__link">
+            <button
+              className="navbar__link navbar__link--button"
+              onClick={() => scrollToSection('testimonials')}
+            >
               Testimonials
-            </a>
+            </button>
           </li>
           <li>
             <Link to="/signup" className="navbar__link">
@@ -53,27 +67,25 @@ export default function Navbar() {
             isOpen ? 'navbar__mobile-links--open' : ''
           }`}
         >
-          <a
-            href="/"
+          <Link
+            to="/"
             className="navbar__mobile-link"
             onClick={() => setIsOpen(false)}
           >
             Home
-          </a>
-          <a
-            href="#howitworks"
-            className="navbar__mobile-link"
-            onClick={() => setIsOpen(false)}
+          </Link>
+          <button
+            className="navbar__mobile-link navbar__link--button"
+            onClick={() => scrollToSection('howitworks')}
           >
             How it works
-          </a>
-          <a
-            href="#testimonials"
-            className="navbar__mobile-link"
-            onClick={() => setIsOpen(false)}
+          </button>
+          <button
+            className="navbar__mobile-link navbar__link--button"
+            onClick={() => scrollToSection('testimonials')}
           >
             Testimonials
-          </a>
+          </button>
           <Link
             to="/signup"
             className="navbar__mobile-link"
