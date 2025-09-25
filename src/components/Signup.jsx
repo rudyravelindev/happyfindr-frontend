@@ -13,40 +13,57 @@ export default function Signup() {
     confirmPassword: '',
   });
 
+  const [avatar, setAvatar] = useState(null); // base64 avatar
+  const [avatarFileName, setAvatarFileName] = useState(''); // filename for UI feedback
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
   const { signup } = useAuth();
   const navigate = useNavigate();
 
+  // Form validation
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email))
       newErrors.email = 'Email is invalid';
-    }
 
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    } else if (formData.password.length < 6) {
+    if (!formData.password) newErrors.password = 'Password is required';
+    else if (formData.password.length < 6)
       newErrors.password = 'Password must be at least 6 characters';
-    }
 
-    if (!formData.confirmPassword) {
+    if (!formData.confirmPassword)
       newErrors.confirmPassword = 'Please confirm your password';
-    } else if (formData.password !== formData.confirmPassword) {
+    else if (formData.password !== formData.confirmPassword)
       newErrors.confirmPassword = 'Passwords do not match';
-    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
+  };
+
+  // Handle avatar selection
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setAvatarFileName(file.name);
+
+    const reader = new FileReader();
+    reader.onloadend = () => setAvatar(reader.result);
+    reader.readAsDataURL(file);
+  };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -54,29 +71,28 @@ export default function Signup() {
 
     try {
       setLoading(true);
+
+      // user data you may later send to backend
+      const userData = {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        avatar,
+      };
+
       await signup(formData.email, formData.password, {
         name: formData.name,
       });
+
+      if (avatar) localStorage.setItem('userAvatar', avatar);
+
       navigate('/items');
     } catch (error) {
-      setErrors({ submit: 'Failed to create account. Please try again.' });
-    }
-    setLoading(false);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: '',
-      }));
+      setErrors({
+        submit: error.message || 'Failed to create account. Please try again.',
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -93,6 +109,7 @@ export default function Signup() {
         {errors.submit && <ErrorMessage message={errors.submit} type="error" />}
 
         <form onSubmit={handleSubmit} className="signup__form" noValidate>
+          {/* Full Name */}
           <div className="signup__form-group">
             <label htmlFor="name" className="signup__label">
               Full Name
@@ -114,6 +131,7 @@ export default function Signup() {
             )}
           </div>
 
+          {/* Email */}
           <div className="signup__form-group">
             <label htmlFor="email" className="signup__label">
               Email Address
@@ -135,6 +153,7 @@ export default function Signup() {
             )}
           </div>
 
+          {/* Password */}
           <div className="signup__form-group">
             <label htmlFor="password" className="signup__label">
               Password
@@ -156,6 +175,7 @@ export default function Signup() {
             )}
           </div>
 
+          {/* Confirm Password */}
           <div className="signup__form-group">
             <label htmlFor="confirmPassword" className="signup__label">
               Confirm Password
@@ -177,6 +197,21 @@ export default function Signup() {
             )}
           </div>
 
+          {/* Avatar Upload */}
+          <div className="signup__avatar-group">
+            <label htmlFor="avatar" className="signup__label">
+              Profile Picture
+            </label>
+            <input
+              type="file"
+              id="avatar"
+              accept="image/*"
+              onChange={handleAvatarChange}
+            />
+            {avatarFileName && <p>Selected file: {avatarFileName}</p>}
+          </div>
+
+          {/* Submit Button */}
           <button type="submit" className="signup__button" disabled={loading}>
             {loading ? <LoadingSpinner size="small" /> : 'Create Account'}
           </button>
