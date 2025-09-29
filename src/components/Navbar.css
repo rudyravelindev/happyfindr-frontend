@@ -44,6 +44,11 @@
   height: 100%;
   align-items: center;
 }
+.navbar__links li {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
 
 .navbar__link,
 .navbar__link--login,

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
+
 import './Navbar.css';
 import { AiOutlineMenu } from 'react-icons/ai';
 
@@ -10,7 +12,7 @@ export default function Navbar() {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false); // close mobile menu
+      setIsOpen(false);
     }
   };
 
@@ -29,20 +31,26 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <button
-              className="navbar__link navbar__link--button"
-              onClick={() => scrollToSection('howitworks')}
-            >
-              How it works
-            </button>
-          </li>
-          <li>
-            <button
-              className="navbar__link navbar__link--button"
-              onClick={() => scrollToSection('testimonials')}
-            >
-              Testimonials
-            </button>
+            <li>
+              <HashLink
+                smooth
+                to="/#howitworks"
+                className="navbar__link navbar__link--button"
+                onClick={() => setIsOpen(false)}
+              >
+                How it works
+              </HashLink>
+            </li>
+            <li>
+              <HashLink
+                smooth
+                to="/#testimonials"
+                className="navbar__link navbar__link--button"
+                onClick={() => setIsOpen(false)}
+              >
+                Testimonials
+              </HashLink>
+            </li>
           </li>
           <li>
             <Link to="/signup" className="navbar__link">
@@ -74,18 +82,23 @@ export default function Navbar() {
           >
             Home
           </Link>
-          <button
+          <HashLink
+            smooth
+            to="/#howitworks"
             className="navbar__mobile-link navbar__link--button"
-            onClick={() => scrollToSection('howitworks')}
+            onClick={() => setIsOpen(false)}
           >
             How it works
-          </button>
-          <button
+          </HashLink>
+
+          <HashLink
+            smooth
+            to="/#testimonials"
             className="navbar__mobile-link navbar__link--button"
-            onClick={() => scrollToSection('testimonials')}
+            onClick={() => setIsOpen(false)}
           >
             Testimonials
-          </button>
+          </HashLink>
           <Link
             to="/signup"
             className="navbar__mobile-link"
