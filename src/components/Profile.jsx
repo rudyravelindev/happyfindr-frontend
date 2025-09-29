@@ -1,4 +1,4 @@
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from './AuthContext';
 import './Profile.css';
 
@@ -79,8 +79,17 @@ export default function Profile() {
         <div className="profile__card">
           <div className="profile__avatar-section">
             <div className="profile__avatar">
-              {currentUser?.name?.[0]?.toUpperCase() || 'U'}
+              {currentUser.avatar ? (
+                <img
+                  src={currentUser.avatar}
+                  alt="Profile"
+                  className="profile__avatar-img"
+                />
+              ) : (
+                currentUser?.name?.[0]?.toUpperCase() || 'U'
+              )}
             </div>
+
             <div className="profile__avatar-info">
               <h3 className="profile__name">{currentUser.name}</h3>
               <p className="profile__email">{currentUser.email}</p>
@@ -97,16 +106,20 @@ export default function Profile() {
                 <span className="profile__info-label">Email:</span>
                 <span className="profile__info-value">{currentUser.email}</span>
               </div>
-              <div className="profile__info-item">
-                <span className="profile__info-label">Phone:</span>
-                <span className="profile__info-value">
-                  {currentUser.phone || 'Not set'}
-                </span>
-              </div>
+
               <div className="profile__info-item">
                 <span className="profile__info-label">Member Since:</span>
                 <span className="profile__info-value">
-                  {formatDate(currentUser.createdAt)}
+                  {currentUser.signupDate
+                    ? new Date(currentUser.signupDate).toLocaleDateString(
+                        'en-US',
+                        {
+                          month: 'short',
+                          day: '2-digit',
+                          year: 'numeric',
+                        }
+                      )
+                    : 'Unknown'}
                 </span>
               </div>
 
@@ -184,8 +197,8 @@ export default function Profile() {
             </form>
           )}
         </div>
-
-        <div className="profile__stats">
+        {/* this when I will to the backend in the future not for right now */}
+        {/* <div className="profile__stats">
           <h3 className="profile__stats-title">Account Statistics</h3>
           <div className="profile__stats-grid">
             <div className="profile__stat">
@@ -201,7 +214,7 @@ export default function Profile() {
               <span className="profile__stat-label">Items Lost</span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

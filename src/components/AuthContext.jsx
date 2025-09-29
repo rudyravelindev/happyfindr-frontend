@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Restore session from localStorage
   useEffect(() => {
     const user = localStorage.getItem('happyfindr_user');
     if (user) {
@@ -22,25 +23,73 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const signup = async (email, password, userData) => {
-    // TODO: Implement API call
-    const user = { id: Date.now(), email, ...userData };
-    localStorage.setItem('happyfindr_user', JSON.stringify(user));
-    setCurrentUser(user);
-    return user;
+  // Signup a new user
+  const signup = async (email, password, userData, avatar = null) => {
+    const users = JSON.parse(localStorage.getItem('happyfindr_users')) || [];
+
+    if (users.some((u) => u.email === email)) {
+      throw new Error('Email already registered');
+    }
+
+    const signupDate = new Date().toISOString();
+    const newUser = {
+      id: Date.now(),
+      email,
+      password,
+      signupDate,
+      avatar,
+      signupDate: new Date().toISOString(),
+      ...userData,
+    };
+
+    users.push(newUser);
+
+    localStorage.setItem('happyfindr_users', JSON.stringify(users));
+    localStorage.setItem('happyfindr_user', JSON.stringify(newUser));
+    setCurrentUser(newUser);
+
+    return newUser;
   };
 
+  // Login existing user
   const login = async (email, password) => {
-    // TODO: Implement API call
-    const user = { id: 1, email, name: 'Test User' };
+    const users = JSON.parse(localStorage.getItem('happyfindr_users')) || [];
+
+    const user = users.find(
+      (u) => u.email === email && u.password === password
+    );
+
+    if (!user) {
+      throw new Error('Invalid email or password');
+    }
+
     localStorage.setItem('happyfindr_user', JSON.stringify(user));
     setCurrentUser(user);
     return user;
   };
 
+  // Logout
   const logout = () => {
     localStorage.removeItem('happyfindr_user');
     setCurrentUser(null);
+  };
+  // Update profile of current user
+  const updateProfile = async (updates) => {
+    if (!currentUser) throw new Error('No user logged in');
+
+    const users = JSON.parse(localStorage.getItem('happyfindr_users')) || [];
+
+    const updatedUser = { ...currentUser, ...updates };
+
+    const updatedUsers = users.map((u) =>
+      u.id === currentUser.id ? updatedUser : u
+    );
+
+    localStorage.setItem('happyfindr_users', JSON.stringify(updatedUsers));
+    localStorage.setItem('happyfindr_user', JSON.stringify(updatedUser));
+    setCurrentUser(updatedUser);
+
+    return updatedUser;
   };
 
   const value = {
@@ -48,6 +97,7 @@ export const AuthProvider = ({ children }) => {
     signup,
     login,
     logout,
+    updateProfile,
   };
 
   return (
@@ -56,5 +106,3 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
-export default AuthContext;
