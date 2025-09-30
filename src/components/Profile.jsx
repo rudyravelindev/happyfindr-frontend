@@ -50,7 +50,7 @@ export default function Profile() {
     }
   };
 
-  const formatDate = (dateString) => {
+  const _formatDate = (dateString) => {
     if (!dateString) return 'January 2024';
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -197,24 +197,6 @@ export default function Profile() {
             </form>
           )}
         </div>
-        {/* this when I will to the backend in the future not for right now */}
-        {/* <div className="profile__stats">
-          <h3 className="profile__stats-title">Account Statistics</h3>
-          <div className="profile__stats-grid">
-            <div className="profile__stat">
-              <span className="profile__stat-number">5</span>
-              <span className="profile__stat-label">Registered Items</span>
-            </div>
-            <div className="profile__stat">
-              <span className="profile__stat-number">2</span>
-              <span className="profile__stat-label">Items Found</span>
-            </div>
-            <div className="profile__stat">
-              <span className="profile__stat-number">1</span>
-              <span className="profile__stat-label">Items Lost</span>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

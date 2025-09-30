@@ -1,4 +1,5 @@
 import './ErrorMessage.css';
+import PropTypes from 'prop-types';
 
 export default function ErrorMessage({ message, type = 'error' }) {
   return (
@@ -8,3 +9,7 @@ export default function ErrorMessage({ message, type = 'error' }) {
     </div>
   );
 }
+ErrorMessage.propTypes = {
+  message: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['error', 'warning', 'success']),
+};

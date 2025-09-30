@@ -1,6 +1,7 @@
 import './CTA.css';
 import ctaImage from '../assets/images/cta-img.jpg';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default function CTA() {
   return (
@@ -11,7 +12,7 @@ export default function CTA() {
 
           <p className="cta__description">
             Join thousands of happy users who reunited with their lost items
-            through HappyFindr's smart QR code system.
+            through HappyFindr&apos;s smart QR code system.
           </p>
 
           <Link to="/signup" className="cta__button">
@@ -32,3 +33,5 @@ export default function CTA() {
     </section>
   );
 }
+
+CTA.propTypes = {};

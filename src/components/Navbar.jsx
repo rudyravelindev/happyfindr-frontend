@@ -8,7 +8,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const scrollToSection = (id) => {
+  const _scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

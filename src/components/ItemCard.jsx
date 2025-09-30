@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ItemCard.css';
+import PropTypes from 'prop-types';
 
 const ItemCard = ({ item, onView, onEdit, onDelete }) => {
   const [showQRModal, setShowQRModal] = useState(false);
@@ -120,6 +121,22 @@ const ItemCard = ({ item, onView, onEdit, onDelete }) => {
       )}
     </>
   );
+};
+ItemCard.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    serialNumber: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.string,
+    createdAt: PropTypes.string,
+    updatedAt: PropTypes.string,
+  }).isRequired,
+  onView: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default ItemCard;

@@ -8,6 +8,7 @@
   min-height: 60px;
   margin-top: auto;
 }
+
 .footer__container {
   max-width: 1200px;
   margin: 0 auto;
@@ -31,9 +32,10 @@
   margin-left: 2px;
 }
 
-.footer__links {
+/* Updated navigation spacing */
+.footer__nav {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem; /* Increased spacing between links */
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -103,18 +105,18 @@
     align-items: center;
   }
 
-  .footer__links {
+  .footer__nav {
     order: 3;
     width: 100%;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem; /* Adjusted for medium screens */
   }
 }
 
 @media (max-width: 480px) {
-  .footer__links {
+  .footer__nav {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem; /* Stack links with spacing */
   }
 
   .footer__logo {

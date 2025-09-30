@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from './AuthContext';
 import './ProfileModal.css';
+import PropTypes from 'prop-types';
 
 export default function ProfileModal({ isOpen, onClose }) {
   const { currentUser, updateProfile, logout } = useAuth();
@@ -225,3 +226,9 @@ export default function ProfileModal({ isOpen, onClose }) {
     </div>
   );
 }
+
+// Add this PropTypes validation at the bottom
+ProfileModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+};

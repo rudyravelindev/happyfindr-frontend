@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './ItemDetailModal.css';
 
 export default function ItemDetailModal({
@@ -8,6 +9,7 @@ export default function ItemDetailModal({
   onEdit,
   onUpdate,
   onDelete,
+  onModeChange,
 }) {
   const [formData, setFormData] = useState({
     name: item.name,
@@ -308,8 +310,8 @@ export default function ItemDetailModal({
             <div className="delete-confirm">
               <h3>Delete Item</h3>
               <p>
-                Are you sure you want to delete "{item.name}"? This action
-                cannot be undone.
+                Are you sure you want to delete &quot;{item.name}&quot;? This
+                action cannot be undone.
               </p>
               <div className="delete-confirm__actions">
                 <button
@@ -334,3 +336,23 @@ export default function ItemDetailModal({
     </div>
   );
 }
+
+ItemDetailModal.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    category: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    serialNumber: PropTypes.string,
+    createdAt: PropTypes.string,
+    updatedAt: PropTypes.string,
+  }).isRequired,
+  mode: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onModeChange: PropTypes.func.isRequired,
+};
