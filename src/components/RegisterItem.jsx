@@ -37,7 +37,7 @@ export default function RegisterItem() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const itemId = await generateQRCode(formData);
+      const _itemId = await generateQRCode(formData);
       setIsRegistered(true);
       alert('Item registered successfully! QR code generated.');
     } catch (error) {

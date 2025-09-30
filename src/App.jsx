@@ -18,23 +18,24 @@ function App() {
   return (
     <div className="app">
       <Navbar />
-      <main>
+      <main className="app__main">
         <Routes>
-          {/* Home Route */}{' '}
+          {/* Home Route */}
           <Route
             path="/"
             element={
-              <>
+              <div className="app__home">
                 <Hero />
                 <Features />
                 <Testimonials />
                 <CTA />
-              </>
+              </div>
             }
           />
           {/* Auth Routes */}
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+
           {/* Dashboard Routes - Protected */}
           <Route
             path="/dashboard"
@@ -49,8 +50,6 @@ function App() {
             <Route path="register-item" element={<RegisterItem />} />
             <Route path="profile" element={<Profile />} />
           </Route>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
       <Footer />

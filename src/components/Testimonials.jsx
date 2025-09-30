@@ -40,7 +40,9 @@ export default function Testimonials() {
               className={`testimonial__card ${testimonial.bgColor}`}
             >
               <div className="testimonial__content">
-                <p className="testimonial__text">"{testimonial.content}"</p>
+                <p className="testimonial__text">
+                  {`"${testimonial.content}"`}
+                </p>
 
                 <div className="testimonial__author">
                   <h3 className="testimonial__name">{testimonial.name}</h3>

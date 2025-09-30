@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from './AuthContext';
-import ProfileModal from './ProfileModal';
 import { Link } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import {
   AiOutlineMenu,
   AiOutlineBell,
@@ -11,17 +10,13 @@ import {
 } from 'react-icons/ai';
 import './DashboardHeader.css';
 
-export default function DashboardHeader({ onMenuClick }) {
+export default function DashboardHeader({ onMenuClick: _onMenuClick }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const { currentUser, logout } = useAuth();
 
   const handleLogout = () => {
     logout();
     setIsProfileOpen(false);
-  };
-  const handleProfileClick = () => {
-    setIsProfileOpen(false);
-    onProfileClick();
   };
 
   return (
@@ -48,10 +43,24 @@ export default function DashboardHeader({ onMenuClick }) {
 
           {isProfileOpen && (
             <div className="dashboard-header__dropdown">
-              <button className="dashboard-header__dropdown-item">
+              <Link
+                to="profile"
+                className="dashboard-header__dropdown-item"
+                onClick={() => setIsProfileOpen(false)}
+              >
                 <AiOutlineUser />
                 <span>Profile</span>
-              </button>
+              </Link>
+
+              <Link
+                to="items"
+                className="dashboard-header__dropdown-item"
+                onClick={() => setIsProfileOpen(false)}
+              >
+                <AiOutlineMenu />
+                <span>My Items</span>
+              </Link>
+
               <button
                 className="dashboard-header__dropdown-item"
                 onClick={handleLogout}
@@ -62,11 +71,11 @@ export default function DashboardHeader({ onMenuClick }) {
             </div>
           )}
         </div>
-        <ProfileModal
-          isOpen={isProfileOpen}
-          onClose={() => setIsProfileOpen(false)}
-        />
       </div>
     </header>
   );
 }
+
+DashboardHeader.propTypes = {
+  onMenuClick: PropTypes.func,
+};

@@ -72,21 +72,23 @@ export default function Signup() {
     try {
       setLoading(true);
 
-      // user data you may later send to backend
-      const userData = {
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-        avatar,
-      };
+      // Signup user
+      await signup(
+        formData.email,
+        formData.password,
+        {
+          name: formData.name,
+        },
+        avatar
+      );
 
-      await signup(formData.email, formData.password, {
-        name: formData.name,
-      });
-
+      // Save avatar in localStorage
       if (avatar) localStorage.setItem('userAvatar', avatar);
 
-      navigate('/items');
+      // Save signup date in localStorage
+      localStorage.setItem('signupDate', new Date().toISOString());
+
+      navigate('/dashboard/profile');
     } catch (error) {
       setErrors({
         submit: error.message || 'Failed to create account. Please try again.',

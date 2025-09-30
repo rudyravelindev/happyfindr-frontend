@@ -1,39 +1,50 @@
-/* App.css */
+/* Root wrapper */
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* Block: app */
 .app {
   flex: 1;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  /* padding: 2rem; */
   text-align: center;
   width: 100%;
 }
 
-/* footer down */
-main {
+/* Element: main content */
+.app__main {
   flex: 1;
 }
 
-.logo {
+/* Element: home wrapper (for homepage sections like Hero, Features, etc.) */
+.app__home {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Example logo block */
+.app__logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
-.logo:hover {
+
+.app__logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-.logo.react:hover {
+
+.app__logo--react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
+/* Animation */
+@keyframes app-logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -43,15 +54,17 @@ main {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  a:nth-of-type(2) .app__logo {
+    animation: app-logo-spin infinite 20s linear;
   }
 }
 
-.card {
+/* Example card block */
+.app__card {
   padding: 2em;
 }
 
-.read-the-docs {
+/* Documentation text */
+.app__docs {
   color: #888;
 }
